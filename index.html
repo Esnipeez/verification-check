@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .captcha-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 350px;
+            width: 100%;
+        }
+        h2 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="captcha-box">
+    <h2>Security Check</h2>
+    <p>Please confirm you are human to continue to the requested link.</p>
+    <button class="btn" onclick="playLoudAudio()">Verify You Are Human</button>
+</div>
+
+<!-- Audio Element -->
+<audio id="prankAudio" src="loud_sound.mp3" preload="auto"></audio>
+
+<script>
+    function playLoudAudio() {
+        const audio = document.getElementById('prankAudio');
+        
+        // Attempt to play audio on click
+        audio.play().then(() => {
+            // Change button text to confuse them slightly after clicking
+            document.querySelector('.btn').innerText = "Verifying...";
+        }).catch(error => {
+            console.log("Autoplay was prevented:", error);
+        });
+    }
+</script>
+
+</body>
+</html>
